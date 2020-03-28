@@ -32,3 +32,10 @@ export const replaceCls = (selector, oldCls, newCls) => {
     el.classList.replace(oldCls, newCls);
   }
 };
+
+export const getCls = selector => {
+  const el = getEl(selector, false);
+  if (el) {
+    return el.classList.value;
+  }
+};

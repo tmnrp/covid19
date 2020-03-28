@@ -1,10 +1,10 @@
-@import "./resources/Animations.scss";
+@import "./resources/css/Animations.scss";
 
-@import "./themes/default/light.scss";
-@import "./themes/default/dark.scss";
+@import "./resources/css/themes/default/light.scss";
+@import "./resources/css/themes/default/dark.scss";
 
-@import "./themes/blue/light.scss";
-@import "./themes/blue/dark.scss";
+@import "./resources/css/themes/blue/light.scss";
+@import "./resources/css/themes/blue/dark.scss";
 
 * {
   box-sizing: border-box;

@@ -1,7 +1,7 @@
-body.light-blue {
+body.light {
   $bg: #fcfcfc;
   $bg-panel: #f2f2f2;
-  $primary-color: #1e63b8;
+  $primary-color: #4f4f50;
   $font-color: #373737;
 
   background-color: $bg;
@@ -9,5 +9,9 @@ body.light-blue {
 
   .primary-color {
     color: $primary-color;
+  }
+
+  .primary-fill {
+    fill: $primary-color;
   }
 }

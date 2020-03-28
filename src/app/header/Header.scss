@@ -2,7 +2,7 @@
 
 .header-container {
   display: grid;
-  grid-template-columns: 100px auto 50px;
+  grid-template-columns: 50px auto 50px;
   height: 100%;
 }
 
@@ -10,4 +10,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo-container svg{
+  height: 50px;
+  width: 50px;
+  padding: 8px;
 }

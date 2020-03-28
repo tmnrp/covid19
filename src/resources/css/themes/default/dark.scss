@@ -1,7 +1,7 @@
-body.dark-blue {
+body.dark {
   $bg: #000000;
   $bg-panel: #222222;
-  $primary-color: #67a9ed;
+  $primary-color: #bebebd;
   $font-color: #fcfcfc;
 
   background-color: $bg;
@@ -9,5 +9,9 @@ body.dark-blue {
 
   .primary-color {
     color: $primary-color;
+  }
+
+  .primary-fill {
+    fill: $primary-color;
   }
 }
