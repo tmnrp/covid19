@@ -1,0 +1,12 @@
+@import "../../index.scss";
+
+#navbar {
+  display: none;
+}
+
+#navbar.is-active {
+  display: initial;
+  position: absolute;
+  right: 10px;
+  top: 50px;
+}

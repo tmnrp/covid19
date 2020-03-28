@@ -1,1 +1,13 @@
 @import "../../index.scss";
+
+.header-container {
+  display: grid;
+  grid-template-columns: 100px auto 50px;
+  height: 100%;
+}
+
+.hamburger-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
