@@ -1,0 +1,16 @@
+@import "../../index.scss";
+
+.loader-container {
+  display: none;
+}
+
+.loader-container.is-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-container.is-active svg {
+  display: inline;
+  font-size: 50px;
+}

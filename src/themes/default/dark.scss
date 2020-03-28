@@ -1,0 +1,13 @@
+body.dark {
+  $bg: #000000;
+  $bg-panel: #222222;
+  $primary-color: #bebebd;
+  $font-color: #fcfcfc;
+
+  background-color: $bg;
+  color: $font-color;
+
+  .primary-color {
+    color: $primary-color;
+  }
+}
