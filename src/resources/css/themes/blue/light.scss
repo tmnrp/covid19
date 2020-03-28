@@ -14,4 +14,24 @@ body.light-blue {
   .primary-fill {
     fill: $primary-color;
   }
+
+  .primary-border {
+    border: 1px solid $primary-color;
+  }
+
+  .bg-panel-border-bottom {
+    border-bottom: 2px solid $bg-panel;
+  }
+
+  .bg-panel-border-top {
+    border-top: 2px solid $bg-panel;
+  }
+
+  .bg-panel-bg-color {
+    background-color: $bg-panel;
+  }
+
+  .bg-panel-color {
+    color: $font-color;
+  }
 }

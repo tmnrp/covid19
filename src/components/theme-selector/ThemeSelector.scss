@@ -1,0 +1,18 @@
+@import "../../index.scss";
+
+.theme-selector-container {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.theme-selector-container svg,
+.theme-selector-container select {
+  margin: 5px;
+}
+
+.theme-selector-container select {
+  padding: 5px;
+  outline: none;
+  border-radius: 3px;
+}
