@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa";
 
 const HamburgerButton = () => {
   return (
-    <div className="hamburger-btn primary-color">
+    <div className="hamburger-btn primary-color primary-color-darken-hover">
       <FaBars />
     </div>
   );

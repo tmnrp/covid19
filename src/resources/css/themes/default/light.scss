@@ -19,6 +19,10 @@ body.light {
     border: 1px solid $primary-color;
   }
 
+  .bg-panel-border {
+    border: 5px solid $bg-panel;
+  }
+
   .bg-panel-border-bottom {
     border-bottom: 2px solid $bg-panel;
   }
@@ -33,5 +37,17 @@ body.light {
 
   .bg-panel-color {
     color: $font-color;
+  }
+
+  .bg-panel-bg-darken-hover {
+    &:hover {
+      background-color: darken($color: $bg-panel, $amount: 10);
+    }
+  }
+
+  .primary-color-darken-hover {
+    &:hover {
+      color: darken($color: $primary-color, $amount: 50);
+    }
   }
 }
