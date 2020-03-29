@@ -1,35 +1,29 @@
 import "./Navbar.scss";
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { PAGES_LIST } from "../../util/Constants";
 
-let history;
-const Navbar = () => {
-  history = useHistory();
+const Navbar = props => {
   return (
     <ul id="navbar" className="primary-border bg-panel-bg-color fade-in-down">
-      {getPages()}
+      {getPages(props.pages, props.clickCallback)}
     </ul>
   );
 };
 
-const getPages = () => {
-  return PAGES_LIST.map(page => {
+const getPages = (pages, clickCallback) => {
+  return pages.map(page => {
     return (
       <li
-        key={page}
+        key={page.name}
         className="navbar-items-container bg-panel-bg-darken-hover"
-        onClick={e => onNavItemClick(e, page)}
+        onClick={e => clickCallback(e, page.name)}
       >
-        <div className="page-icon"></div>
-        <div className="page-name-link primary-color">{page.toUpperCase()}</div>
+        <div className="page-icon primary-color">{page.icon}</div>
+        <div className="page-name-link primary-color">
+          {page.name.toUpperCase()}
+        </div>
       </li>
     );
   });
-};
-
-const onNavItemClick = (e, page) => {
-  history.push(`/covid19/${page}`);
 };
 
 export default Navbar;

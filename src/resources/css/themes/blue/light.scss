@@ -50,4 +50,8 @@ body.light-blue {
       color: darken($color: $primary-color, $amount: 10);
     }
   }
+
+  #navbar.bg-panel-bg-color {
+    background-color: $bg;
+  }
 }

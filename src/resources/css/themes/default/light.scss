@@ -47,7 +47,11 @@ body.light {
 
   .primary-color-darken-hover {
     &:hover {
-      color: darken($color: $primary-color, $amount: 50);
+      color: darken($color: $primary-color, $amount: 10);
     }
+  }
+
+  #navbar.bg-panel-bg-color {
+    background-color: $bg;
   }
 }

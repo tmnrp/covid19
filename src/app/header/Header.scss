@@ -12,8 +12,18 @@
   align-items: center;
 }
 
-.logo-container svg{
+.logo-container {
+  max-height: 50px;
+}
+
+.logo-container svg {
   height: 50px;
   width: 50px;
   padding: 8px;
+}
+
+@media only screen and (min-width: 500px) {
+  .header-container {
+    align-items: center;
+  }
 }

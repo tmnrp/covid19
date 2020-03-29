@@ -3,24 +3,43 @@
 #navbar {
   display: none;
   list-style: none;
+
+  right: 10px;
+  top: 55px;
+  border-radius: 3px;
 }
 
 #navbar.is-active {
   display: initial;
   position: absolute;
-  right: 10px;
-  top: 55px;
 }
 
 .navbar-items-container {
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  padding: 10px 20px;
+}
+
+.page-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
 }
 
 .page-name-link {
   text-decoration: none;
-  padding: 10px 20px;
+}
+
+@media only screen and (min-width: 500px) {
+  #navbar {
+    position: initial !important;
+    display: flex !important;
+    flex-direction: row;
+    border: none;
+    max-height: 50px;
+    justify-content: flex-end;
+  }
 }
