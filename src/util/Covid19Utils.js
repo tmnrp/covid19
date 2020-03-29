@@ -1,34 +1,43 @@
+import axios from "axios";
+import { csv } from "csvtojson";
 import {
-  CONFIRMED,
-  RECOVERED,
-  DEATH,
-  PROVINCE_STATE,
-  COUNTRY_REGION,
-  LAT,
-  LONG
-} from "../utils/Covid19Constants";
+  MODE_CONFIRMED,
+  MODE_RECOVERED,
+  MODE_DEATH,
+  COLUMN_PROVINCE_STATE,
+  COLUMN_COUNTRY_REGION,
+  COLUMN_LAT,
+  COLUMN_LONG,
+  LINK_CONFIRMED_CASES,
+  LINK_DEATH_CASES,
+  LINK_RECOVERED_CASES
+} from "../util/Constants";
 
+/**
+ * Process and merge the jsondata.
+ */
 export const processAndMergeJsonData = (
-  casesColumns,
+  columnHeaders,
   confirmed,
   recovered,
   death
 ) => {
-  const processedAndMergedData = { casesColumns: casesColumns };
+  // Initiate the object with default headers.
+  const processedAndMergedData = { columnHeaders: columnHeaders };
   doProcessAndMergeJsonData(
     confirmed,
-    initDoProcessAndMergeJsonData(processedAndMergedData, CONFIRMED),
-    CONFIRMED
+    initDoProcessAndMergeJsonData(processedAndMergedData, MODE_CONFIRMED),
+    MODE_CONFIRMED
   );
   doProcessAndMergeJsonData(
     recovered,
-    initDoProcessAndMergeJsonData(processedAndMergedData, RECOVERED),
-    RECOVERED
+    initDoProcessAndMergeJsonData(processedAndMergedData, MODE_RECOVERED),
+    MODE_RECOVERED
   );
   doProcessAndMergeJsonData(
     death,
-    initDoProcessAndMergeJsonData(processedAndMergedData, DEATH),
-    DEATH
+    initDoProcessAndMergeJsonData(processedAndMergedData, MODE_DEATH),
+    MODE_DEATH
   );
   return processedAndMergedData;
 };
@@ -59,6 +68,9 @@ const doProcessAndMergeJsonData = (
   });
 };
 
+/**
+ * Provide a structure for data to be merged back into.
+ */
 const initDoProcessAndMergeJsonData = (
   processedAndMergedData,
   appendString
@@ -73,14 +85,41 @@ const initDoProcessAndMergeJsonData = (
 };
 
 const getKnownHeaders = () => {
-  return [PROVINCE_STATE, COUNTRY_REGION, LAT, LONG];
+  return [
+    COLUMN_PROVINCE_STATE,
+    COLUMN_COUNTRY_REGION,
+    COLUMN_LAT,
+    COLUMN_LONG
+  ];
 };
 
 const getKnowInitialDataStructure = () => {
   return {
-    [PROVINCE_STATE]: "",
-    [COUNTRY_REGION]: "",
-    [LAT]: "",
-    [LONG]: ""
+    [COLUMN_PROVINCE_STATE]: "",
+    [COLUMN_COUNTRY_REGION]: "",
+    [COLUMN_LAT]: "",
+    [COLUMN_LONG]: ""
   };
+};
+
+export const fetchConfirmedData = async () => {
+  const confirmedCsv = await axios.get(LINK_CONFIRMED_CASES);
+  return convertCsvToJson(confirmedCsv.data);
+};
+
+export const fetchRecoveredData = async () => {
+  const recoveredCsv = await axios.get(LINK_RECOVERED_CASES);
+  return convertCsvToJson(recoveredCsv.data);
+};
+
+export const fetchDeathData = async () => {
+  const deathCsv = await axios.get(LINK_DEATH_CASES);
+  return convertCsvToJson(deathCsv.data);
+};
+
+const convertCsvToJson = async data => {
+  return await csv({
+    noheader: true,
+    output: "csv"
+  }).fromString(data);
 };
