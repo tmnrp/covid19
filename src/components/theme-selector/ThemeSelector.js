@@ -8,7 +8,11 @@ const ThemeSelector = () => {
   return (
     <div className="theme-selector-container primary-color">
       <FaPaintBrush />
-      <select id="theme-selector" className="primary-border bg-panel-bg-color primary-color" onChange={e => onThemeChange(e)}>
+      <select
+        id="theme-selector"
+        className="primary-border bg-panel-bg-color primary-color"
+        onChange={e => onThemeChange(e)}
+      >
         {getThemesList()}
       </select>
     </div>
@@ -26,9 +30,9 @@ const getThemesList = () => {
 };
 
 const onThemeChange = e => {
-  const oldCls = getCls("body");
+  const oldCls = getCls(null, "body");
   const newCls = e.currentTarget.value;
-  replaceCls("body", oldCls, newCls);
+  replaceCls(null, "body", oldCls, newCls);
 };
 
 export default ThemeSelector;
