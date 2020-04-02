@@ -27,20 +27,18 @@ const Covid19ContextProvider = props => {
     // Start loadmask
     addCls(SELECTOR_CLASS, CLS_LOADER, CLS_IS_ACTIVE);
 
-    setTimeout(() => {
-      fetchJHCSSEData(data =>
-        jhcsseCallback(
-          data,
-          setColumns,
-          setConfirmedData,
-          setConfirmedCases,
-          setRecoveredData,
-          setRecoveredCases,
-          setDeathData,
-          setDeathCases
-        )
-      );
-    }, 0);
+    fetchJHCSSEData(data =>
+      jhcsseCallback(
+        data,
+        setColumns,
+        setConfirmedData,
+        setConfirmedCases,
+        setRecoveredData,
+        setRecoveredCases,
+        setDeathData,
+        setDeathCases
+      )
+    );
   }, []);
 
   return (

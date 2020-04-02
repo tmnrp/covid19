@@ -6,6 +6,11 @@ import {
   IoMdFlower
 } from "react-icons/io";
 
+// Randoms
+export const CONST_RECORDS = "records";
+export const CONST_CASES = "cases";
+export const CONST_DATA = "data";
+
 // cls
 export const SELECTOR_ID = "id";
 export const SELECTOR_CLASS = "class";
@@ -50,7 +55,12 @@ export const COLUMN_COUNTRY = "Country";
 export const COLUMN_LAT = "Lat";
 export const COLUMN_LONG = "Long";
 
-export const DEFAULT_COLUMNS = [COLUMN_PROVINCE_STATE, COLUMN_COUNTRY_REGION];
+export const DEFAULT_COLUMNS = [
+  COLUMN_PROVINCE_STATE,
+  COLUMN_COUNTRY_REGION,
+  COLUMN_LAT,
+  COLUMN_LONG
+];
 export const DEFAULT_DISPLAY_NAME_COLUMNS = [COLUMN_PROVINCE, COLUMN_COUNTRY];
 
 // Data link
