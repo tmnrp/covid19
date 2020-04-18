@@ -5,16 +5,17 @@ import { SELECTOR_CLASS, CLS_LOADER, CLS_IS_ACTIVE } from "../util/Constants";
 
 export const Covid19Context = React.createContext();
 
-const Covid19ServiceContextProvider = props => {
+const Covid19ServiceContextProvider = (props) => {
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
     addCls(SELECTOR_CLASS, CLS_LOADER, CLS_IS_ACTIVE);
-    fetchJHCSSEData(data => callback(data, setRecords));
+    fetchJHCSSEData((data) => callback(data, setRecords));
   }, []);
 
   return (
     <Covid19Context.Provider
+      data-testid="covid19-context-provider"
       value={{ records: records, setRecords: setRecords }}
     >
       {props.children}
@@ -22,8 +23,10 @@ const Covid19ServiceContextProvider = props => {
   );
 };
 
-const callback = (data, setRecords) => {
-  setRecords(data);
+export const callback = (data, setRecords) => {
+  if (typeof setRecords === "function") {
+    setRecords(data);
+  }
   removeCls(SELECTOR_CLASS, CLS_LOADER, CLS_IS_ACTIVE);
 };
 
