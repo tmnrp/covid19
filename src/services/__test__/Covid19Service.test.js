@@ -6,7 +6,8 @@ import {
   fetchRecoveredData,
   fetchDeathData,
   fetchJHCSSEData,
-  convertCsvToJsonFromString
+  convertCsvToJsonFromString,
+  getColumnHeaders
 } from "../Covid19Service";
 
 test("test convert to json from string : undefined", async () => {
@@ -192,11 +193,31 @@ test("Test the finale of doProcessAndMergeJsonData : undefined data", async () =
 });
 
 test("Test the finale of fetchJHCSSEData", async () => {
-  const callback = data => {
+  const callback = (data) => {
     expect(data).not.toEqual([] || null || undefined);
   };
 
   await fetchJHCSSEData(callback);
+});
+
+const sampleData = [
+  { data1: "data1", data2: "data2" },
+  { data1: "data1", data2: "data2" },
+  { data1: "data1", data2: "data2" }
+];
+test("getColumnHeaders valid", () => {
+  expect(getColumnHeaders(sampleData)).toEqual({
+    data1: "data1",
+    data2: "data2"
+  });
+});
+
+test("getColumnHeaders empty array", () => {
+  expect(getColumnHeaders([])).toEqual([]);
+});
+
+test("getColumnHeaders no params", () => {
+  expect(getColumnHeaders()).toEqual([]);
 });
 
 test("csvToJson : Confirmed cases should not be empty", async () => {

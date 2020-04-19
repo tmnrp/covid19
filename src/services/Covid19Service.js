@@ -17,13 +17,13 @@ import {
  * process the data into usable json and return it to
  * the callback function.
  */
-export const fetchJHCSSEData = async callback => {
+export const fetchJHCSSEData = async (callback) => {
   const confirmedJson = await fetchConfirmedData();
   const recoveredJson = await fetchRecoveredData();
   const deathJson = await fetchDeathData();
 
   // column headers
-  const columnHeaders = confirmedJson[0] || [];
+  const columnHeaders = getColumnHeaders(confirmedJson);
 
   // get processed and merged data
   const processedData = processAndMergeJsonData(
@@ -34,6 +34,13 @@ export const fetchJHCSSEData = async callback => {
   );
 
   callback(processedData);
+};
+
+/**
+ * Returns the first row from the data.
+ */
+export const getColumnHeaders = (data) => {
+  return data && Array.isArray(data) && data.length > 0 ? data[0] : [];
 };
 
 /**
@@ -56,7 +63,7 @@ export const processAndMergeJsonData = (
 };
 
 // UTC Complete
-export const doProcessAndMergeJsonData = data => {
+export const doProcessAndMergeJsonData = (data) => {
   data = data === null || data === undefined ? [] : data;
   const headers = data.splice(0, 1)[0];
   const processedAndMergedData = { [CONST_RECORDS]: [], [CONST_CASES]: 0 };
@@ -89,7 +96,7 @@ export const doProcessAndMergeJsonData = data => {
 };
 
 // UTC Complete
-export const getLastCaseCount = record => {
+export const getLastCaseCount = (record) => {
   if (
     record !== null &&
     record !== undefined &&
@@ -109,7 +116,7 @@ export const getLastCaseCount = record => {
 // returns object of default columns
 export const initiateDefaultColumns = () => {
   const defaultColumns = {};
-  DEFAULT_COLUMNS.forEach(column => {
+  DEFAULT_COLUMNS.forEach((column) => {
     defaultColumns[column] = "";
   });
 
@@ -135,7 +142,7 @@ export const fetchDeathData = async () => {
 };
 
 // UTC Complete
-export const convertCsvToJsonFromString = async data => {
+export const convertCsvToJsonFromString = async (data) => {
   return await csv({
     noheader: true,
     output: "csv"

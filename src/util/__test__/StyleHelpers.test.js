@@ -33,6 +33,15 @@ test("getEl should returns ele for class", () => {
   expect(getByTestId("myid")).toEqual(getEl("class", "myclass"));
 });
 
+test("getEl should returns ele for html tag", () => {
+  const { getByTestId } = render(
+    <p data-testid="myid" id="myid">
+      ABC
+    </p>
+  );
+  expect(getByTestId("myid")).toEqual(getEl(null, "p"));
+});
+
 test("getEl empty params", () => {
   expect(getEl()).toBeNull();
 });

@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { fetchJHCSSEData } from "../services/Covid19Service";
-import { addCls, removeCls } from "../util/StyleHelpers";
-import { SELECTOR_CLASS, CLS_LOADER, CLS_IS_ACTIVE } from "../util/Constants";
+import { showLoader, hideLoader } from "../components/loader/Loader";
 
 export const Covid19Context = React.createContext();
 
 const Covid19ServiceContextProvider = (props) => {
   const [records, setRecords] = useState([]);
 
-  useEffect(() => {
-    addCls(SELECTOR_CLASS, CLS_LOADER, CLS_IS_ACTIVE);
-    fetchJHCSSEData((data) => callback(data, setRecords));
-  }, []);
+  useEffect(() => onCmpMount(fetchJHCSSEData, setRecords, callback), []);
 
   return (
     <Covid19Context.Provider
@@ -23,11 +19,16 @@ const Covid19ServiceContextProvider = (props) => {
   );
 };
 
+export const onCmpMount = (fetchJHCSSEData, setRecords, callback) => {
+  showLoader();
+  fetchJHCSSEData((data) => callback(data, setRecords));
+};
+
 export const callback = (data, setRecords) => {
   if (typeof setRecords === "function") {
     setRecords(data);
   }
-  removeCls(SELECTOR_CLASS, CLS_LOADER, CLS_IS_ACTIVE);
+  hideLoader();
 };
 
 export default Covid19ServiceContextProvider;

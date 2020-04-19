@@ -1,6 +1,12 @@
 import "./Loader.scss";
 import React from "react";
 import { FaSyncAlt } from "react-icons/fa";
+import { addCls, removeCls } from "../../util/StyleHelpers";
+import {
+  SELECTOR_CLASS,
+  CLS_LOADER,
+  CLS_IS_ACTIVE
+} from "../../util/Constants";
 
 const Loader = () => {
   return (
@@ -9,4 +15,13 @@ const Loader = () => {
     </div>
   );
 };
+
+export const showLoader = () => {
+  addCls(SELECTOR_CLASS, CLS_LOADER, CLS_IS_ACTIVE);
+};
+
+export const hideLoader = () => {
+  removeCls(SELECTOR_CLASS, CLS_LOADER, CLS_IS_ACTIVE);
+};
+
 export default Loader;

@@ -1,19 +1,18 @@
 import React from "react";
-import Covid19ServiceContextProvider, {
-  callback,
-} from "../Covid19ServiceContextProvider";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { renderHook } from "@testing-library/react-hooks";
+import Covid19ServiceContextProvider, {
+  onCmpMount,
+  callback
+} from "../Covid19ServiceContextProvider";
 
 test("Test the callback with valid params", () => {
-  const { result } = renderHook(() =>
-    Covid19ServiceContextProvider(
-      <div data-testid="covid19-context-provider"></div>
-    )
+  const { container } = render(
+    <Covid19ServiceContextProvider>
+      <p>Testing</p>
+    </Covid19ServiceContextProvider>
   );
-
-  const { getByTestId } = render(result.current);
+  expect(container).toMatchSnapshot();
 });
 
 test("Test the callback with valid params", () => {
@@ -48,4 +47,25 @@ test("Test the callback with invalid typeof for setRecords", () => {
   callback(expectedRecord, setRecords);
   expect(getByTestId("myid")).not.toHaveClass("loader-container is-active");
   expect(record).toEqual(record);
+});
+
+test("onCmpMount", () => {
+  const { getByTestId } = render(
+    <div data-testid="loadmask" id="loadmask" className="loader-container">
+      ABC
+    </div>
+  );
+
+  let record = [];
+  const expectedRecord = [1, 2, 3];
+  const setRecords = (data) => {
+    record = data;
+  };
+  const fetchJHCSSEData = (callback) => {
+    callback(expectedRecord, setRecords);
+  };
+
+  onCmpMount(fetchJHCSSEData, setRecords, callback);
+  expect(getByTestId("loadmask")).toHaveClass("loader-container");
+  expect(record).toEqual(expectedRecord);
 });

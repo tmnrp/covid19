@@ -1,5 +1,5 @@
 export const getEl = (selectorType, selector) => {
-  let selectorCls;
+  let selectorCls = selector;
   if (selectorType === "id") {
     selectorCls = "#" + selector;
   } else if (selectorType === "class") {

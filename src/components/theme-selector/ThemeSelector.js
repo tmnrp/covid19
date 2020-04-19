@@ -4,14 +4,17 @@ import { FaPaintBrush } from "react-icons/fa";
 import { THEMES_LIST } from "../../util/Constants";
 import { getCls, replaceCls } from "../../util/StyleHelpers";
 
-const ThemeSelector = () => {
+export const ThemeSelector = () => {
   return (
-    <div className="theme-selector-container primary-color">
+    <div
+      className="theme-selector-container primary-color"
+      data-testid="theme-selector-container"
+    >
       <FaPaintBrush />
       <select
         id="theme-selector"
         className="primary-border bg-panel-bg-color primary-color"
-        onChange={e => onThemeChange(e)}
+        onChange={(e) => onThemeChange(e, "body", e.currentTarget.value)}
       >
         {getThemesList()}
       </select>
@@ -19,20 +22,25 @@ const ThemeSelector = () => {
   );
 };
 
-const getThemesList = () => {
-  return THEMES_LIST.map(theme => {
+export const getThemesList = () => {
+  return THEMES_LIST.map((theme) => {
     return (
-      <option key={theme} value={theme} className="theme-selector-item">
+      <option
+        key={theme}
+        value={theme}
+        className="theme-selector-item"
+        data-testid="theme-selector-item"
+      >
         {theme}
       </option>
     );
   });
 };
 
-const onThemeChange = e => {
-  const oldCls = getCls(null, "body");
-  const newCls = e.currentTarget.value;
-  replaceCls(null, "body", oldCls, newCls);
+export const onThemeChange = (e, selector, value) => {
+  const oldCls = getCls(null, selector);
+  const newCls = value;
+  replaceCls(null, selector, oldCls, newCls);
 };
 
 export default ThemeSelector;
