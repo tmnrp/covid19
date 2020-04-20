@@ -1,18 +1,22 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import HamburgerButton from "../HamburgerButton";
-import { render, cleanup } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import renderer from "react-test-renderer";
-
-afterEach(cleanup);
 
 it("Renders with out crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<HamburgerButton />, div);
+  const { getByTestId } = render(<HamburgerButton />);
+  expect(getByTestId("hamburger-btn")).toMatchSnapshot();
 });
 
-it("Snapshot the hamburger menu", () => {
-  const tree = renderer.create(<HamburgerButton />);
-  expect(tree).toMatchSnapshot();
+it("On hamburger click", () => {
+  let isClicked = false;
+  const clickCallback = () => {
+    isClicked = true;
+  };
+  const { getByTestId } = render(
+    <HamburgerButton clickCallback={clickCallback} />
+  );
+  expect(isClicked).toBeFalsy();
+  fireEvent.click(getByTestId("hamburger-btn"));
+  expect(isClicked).toBeTruthy();
 });

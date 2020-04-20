@@ -1,6 +1,7 @@
 import {
   initiateDefaultColumns,
   getLastCaseCount,
+  processAndMergeJsonData,
   doProcessAndMergeJsonData,
   fetchConfirmedData,
   fetchRecoveredData,
@@ -233,4 +234,9 @@ test("csvToJson : Recovered cases should not be empty", async () => {
 test("csvToJson : Death cases should not be empty", async () => {
   const data = await fetchDeathData();
   expect(data).not.toEqual([] || null || undefined);
+});
+
+test("processAndMergeJsonData", async () => {
+  const result = await processAndMergeJsonData();
+  expect(result).not.toBeFalsy();
 });

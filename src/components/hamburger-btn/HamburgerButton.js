@@ -7,6 +7,7 @@ const HamburgerButton = props => {
     <div
       className="hamburger-btn primary-color primary-color-darken-hover"
       onClick={e => props.clickCallback(e)}
+      data-testid="hamburger-btn"
     >
       <FaBars />
     </div>

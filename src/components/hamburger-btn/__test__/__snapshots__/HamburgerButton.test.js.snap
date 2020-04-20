@@ -1,20 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot the hamburger menu 1`] = `
+exports[`Renders with out crashing 1`] = `
 <div
-  className="hamburger-btn primary-color primary-color-darken-hover"
-  onClick={[Function]}
+  class="hamburger-btn primary-color primary-color-darken-hover"
+  data-testid="hamburger-btn"
 >
   <svg
     fill="currentColor"
     height="1em"
     stroke="currentColor"
-    strokeWidth="0"
-    style={
-      Object {
-        "color": undefined,
-      }
-    }
+    stroke-width="0"
     viewBox="0 0 448 512"
     width="1em"
     xmlns="http://www.w3.org/2000/svg"

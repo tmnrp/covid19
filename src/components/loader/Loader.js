@@ -8,9 +8,13 @@ import {
   CLS_IS_ACTIVE
 } from "../../util/Constants";
 
-const Loader = () => {
+export const Loader = () => {
   return (
-    <div id="loadmask" className={`loader-container  overlay`}>
+    <div
+      id="loadmask"
+      className={`loader-container  overlay`}
+      data-testid="loadmask"
+    >
       <FaSyncAlt className="spining primary-color" />
     </div>
   );

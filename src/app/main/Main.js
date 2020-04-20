@@ -2,7 +2,7 @@ import "./Main.scss";
 import React from "react";
 
 const Main = () => {
-  return <div>Main</div>;
+  return <div data-testid="main-testid">Main</div>;
 };
 
 export default Main;

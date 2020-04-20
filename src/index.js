@@ -5,7 +5,7 @@ import Loader from "./components/loader/Loader";
 import { BrowserRouter as Router } from "react-router-dom";
 import Covid19ServiceContextProvider from "./services/Covid19ServiceContextProvider";
 
-ReactDOM.render(
+export const Index = ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Covid19ServiceContextProvider>

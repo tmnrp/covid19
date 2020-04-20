@@ -4,7 +4,7 @@ import { FaPaintBrush } from "react-icons/fa";
 import { THEMES_LIST } from "../../util/Constants";
 import { getCls, replaceCls } from "../../util/StyleHelpers";
 
-export const ThemeSelector = () => {
+export const ThemeSelector = (props) => {
   return (
     <div
       className="theme-selector-container primary-color"
@@ -14,7 +14,7 @@ export const ThemeSelector = () => {
       <select
         id="theme-selector"
         className="primary-border bg-panel-bg-color primary-color"
-        onChange={(e) => onThemeChange(e, "body", e.currentTarget.value)}
+        onChange={(e) => onThemeChange(props.selector, e.currentTarget.value)}
       >
         {getThemesList()}
       </select>
@@ -37,7 +37,7 @@ export const getThemesList = () => {
   });
 };
 
-export const onThemeChange = (e, selector, value) => {
+export const onThemeChange = (selector, value) => {
   const oldCls = getCls(null, selector);
   const newCls = value;
   replaceCls(null, selector, oldCls, newCls);

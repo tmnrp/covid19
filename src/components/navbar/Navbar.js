@@ -1,15 +1,15 @@
 import "./Navbar.scss";
 import React from "react";
 
-const Navbar = props => {
+export const Navbar = props => {
   return (
-    <ul id="navbar" className="primary-border bg-panel-bg-color fade-in-down">
+    <ul id="navbar" className="primary-border bg-panel-bg-color fade-in-down" data-testid="navbar">
       {getPages(props.pages, props.clickCallback)}
     </ul>
   );
 };
 
-const getPages = (pages, clickCallback) => {
+export const getPages = (pages, clickCallback) => {
   return pages.map(page => {
     return (
       <li

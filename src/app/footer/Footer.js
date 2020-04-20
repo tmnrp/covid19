@@ -4,8 +4,8 @@ import ThemeSelector from "../../components/theme-selector/ThemeSelector";
 
 const Footer = () => {
   return (
-    <div className="footer-container">
-      <ThemeSelector />
+    <div className="footer-container" data-testid="footer-testid">
+      <ThemeSelector selector="body"/>
     </div>
   );
 };

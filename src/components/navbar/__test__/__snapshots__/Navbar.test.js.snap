@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Get pages renders properly 1`] = `
+Array [
+  <li
+    className="navbar-items-container bg-panel-bg-darken-hover"
+    onClick={[Function]}
+  >
+    <div
+      className="page-icon primary-color"
+    >
+      icon 1
+    </div>
+    <div
+      className="page-name-link primary-color"
+    >
+      PAGE 1
+    </div>
+  </li>,
+  <li
+    className="navbar-items-container bg-panel-bg-darken-hover"
+    onClick={[Function]}
+  >
+    <div
+      className="page-icon primary-color"
+    >
+      icon 2
+    </div>
+    <div
+      className="page-name-link primary-color"
+    >
+      PAGE 2
+    </div>
+  </li>,
+]
+`;
+
+exports[`Navbar renders properly 1`] = `
+<ul
+  className="primary-border bg-panel-bg-color fade-in-down"
+  data-testid="navbar"
+  id="navbar"
+>
+  <li
+    className="navbar-items-container bg-panel-bg-darken-hover"
+    onClick={[Function]}
+  >
+    <div
+      className="page-icon primary-color"
+    >
+      icon 1
+    </div>
+    <div
+      className="page-name-link primary-color"
+    >
+      PAGE 1
+    </div>
+  </li>
+  <li
+    className="navbar-items-container bg-panel-bg-darken-hover"
+    onClick={[Function]}
+  >
+    <div
+      className="page-icon primary-color"
+    >
+      icon 2
+    </div>
+    <div
+      className="page-name-link primary-color"
+    >
+      PAGE 2
+    </div>
+  </li>
+</ul>
+`;
